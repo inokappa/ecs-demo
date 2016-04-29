@@ -1,0 +1,13 @@
+global
+  maxconn 256
+  pidfile /tmp/haproxy.pid
+
+defaults
+  mode tcp
+  timeout connect 5000ms
+  timeout client 60000ms
+  timeout server 60000ms
+
+listen http-in
+  bind *:80{{range service "hands-on-app"}}
+  server {{.ID}} {{.Address}}:{{.Port}} check{{end}}

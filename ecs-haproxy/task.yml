@@ -1,0 +1,7 @@
+haproxy:
+  cpu_shares: 128
+  mem_limit: 262144000
+  image: xxxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/ecs-haproxy
+  hostname: haproxy
+  ports:
+    - "80:80"

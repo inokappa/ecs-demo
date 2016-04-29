@@ -1,0 +1,6 @@
+app:
+  cpu_shares: 128
+  mem_limit: 131072000
+  image: xxxxxxxxxxxx.dkr.ecr.us-east-1.amazonaws.com/ecs-app
+  ports:
+    - 4567

@@ -1,0 +1,11 @@
+FROM haproxy:latest
+ADD consul-template /usr/local/bin/
+ADD haproxy.cfg.ctmpl /usr/local/etc/haproxy/
+ADD run-haproxy.sh /root/
+ADD restart-haproxy.sh /root/
+RUN apt-get update && \
+  apt-get -y install curl && \
+  chmod 755 /root/run-haproxy.sh && \
+  chmod 755 /root/restart-haproxy.sh
+
+CMD ["/bin/bash", "/root/run-haproxy.sh"]

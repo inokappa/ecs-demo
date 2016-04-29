@@ -1,0 +1,5 @@
+foo_task:
+  cpu_shares: 10
+  mem_limit: 10
+  image: busybox
+  command: echo "hello ecs and ecr"

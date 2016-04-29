@@ -1,0 +1,8 @@
+registrator:
+  cpu_shares: 128
+  mem_limit: 262144000
+  image: gliderlabs/registrator:latest
+  command: consul://127.0.0.1:8500
+  hostname: registrator
+  volumes:
+    - /var/run/docker.sock:/tmp/docker.sock
