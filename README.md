@@ -16,22 +16,22 @@
 - 以下のように config.yml を設定する
 
 ```yml
-ssh_user_name: "ec2-user"    # SSH ユーザー名を指定する(Amazon Linux の場合には ec2-user )
-key_path: "keyname.pem"      # SSH キーのパスを指定する
-key_name: "keyname"          # SSH キー名を指定する
-ecs_cluster_name: "ecs-demo" # ECS クラスタ名を指定
-region: "ap-northeast-1"     # ECS クラスタを展開するリージョンを指定
-instance_type: "t2.micro"    # ECS コンテナインスタンスのインスタンスタイプを指定
-instance_count: 1            # ECS コンテナインスタンスの初期状態の台数を指定
-desire_instance_count: 3     # 最大何台のコンテナインスタンスを追加するか指定
-vpc_id: "vpc-xxxxxxxx"       # VPC ID を指定する
-subnets:                     # 指定した VPC ID のサブネットを指定
+:ssh_user_name: "ec2-user"    # SSH ユーザー名を指定する(Amazon Linux の場合には ec2-user )
+:key_path: "keyname.pem"      # SSH キーのパスを指定する
+:key_name: "keyname"          # SSH キー名を指定する
+:ecs_cluster_name: "ecs-demo" # ECS クラスタ名を指定
+:region: "ap-northeast-1"     # ECS クラスタを展開するリージョンを指定
+:instance_type: "t2.micro"    # ECS コンテナインスタンスのインスタンスタイプを指定
+:instance_count: 1            # ECS コンテナインスタンスの初期状態の台数を指定
+:desire_instance_count: 3     # 最大何台のコンテナインスタンスを追加するか指定
+:vpc_id: "vpc-xxxxxxxx"       # VPC ID を指定する
+:subnets:                     # 指定した VPC ID のサブネットを指定
   - "subnet-xxxxxxx"
   - "subnet-xxxxxxx"
-azs:                         # Availability Zone を指定
+:azs:                         # Availability Zone を指定
   - "ap-northeast-1a"
   - "ap-northeast-1c"
-sg_ids:                      # Security Group を指定
+:sg_ids:                      # Security Group を指定
   - "sg-xxxxxxxx"
 :ecs:
   :cluster_name: "xxxxxxxxx"
