@@ -88,6 +88,8 @@ foo_task:
 $ rake -T
 (snip)
 
+rake ecs:docker:ecs-foo:build                   # ecs-foo のコンテナイメージをビルドする
+rake ecs:docker:ecs-foo:push                    # ecs-foo を ECR に push する
 rake ecs:compose:service:ecs-foo:ps             # Service Task ecs-foo のコンテナ一覧を確認する
 rake ecs:compose:service:ecs-foo:scale          # Service Task ecs-foo をスケールアウトする(環境変数 DESIRE_COUNT で起動するコンテナ数を指定する)
 rake ecs:compose:service:ecs-foo:up             # Service Task ecs-foo を起動する
