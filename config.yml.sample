@@ -1,19 +1,19 @@
-ssh_user_name: "ec2-user"
-key_path: "keyname.pem"
-key_name: "keyname"
-ecs_cluster_name: "ecs-demo"
-region: "ap-northeast-1"
-instance_type: "t2.micro"
-instance_count: 1
-desire_instance_count: 3
-vpc_id: "vpc-xxxxxxxx"
-subnets:
+:ssh_user_name: "ec2-user"
+:key_path: "keyname.pem"
+:key_name: "keyname"
+:ecs_cluster_name: "ecs-demo"
+:region: "ap-northeast-1"
+:instance_type: "t2.micro"
+:instance_count: 1
+:desire_instance_count: 3
+:vpc_id: "vpc-xxxxxxxx"
+:subnets:
   - "subnet-xxxxxxx"
   - "subnet-xxxxxxx"
-azs:
+:azs:
   - "ap-northeast-1a"
   - "ap-northeast-1c"
-sg_ids:
+:sg_ids:
   - "sg-xxxxxxxx"
 :ecs:
   :cluster_name: "xxxxxxxxx"
