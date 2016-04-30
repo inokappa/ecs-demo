@@ -13,6 +13,7 @@
 
 ## 準備
 
+- docker / ecs-cli / AWS SDK for Ruby を導入しておく
 - 以下のように config.yml を設定する
 
 ```yml
@@ -95,4 +96,33 @@ rake ecs:compose:service:ecs-foo:scale          # Service Task ecs-foo をスケ
 rake ecs:compose:service:ecs-foo:up             # Service Task ecs-foo を起動する
 
 (snip)
+```
+
+### Docker イメージのビルド
+
+`ecs-*` 以下に `docker` というディレクトリを作成し、Dockerfile を置いておくと Docker イメージのビルドも rake コマンドで実行出来る。
+
+```sh
+$ tree ecs-foo
+ecs-foo
+├── docker
+│   └── Dockerfile
+└── task.yml
+
+1 directory, 2 files
+
+$ rake -T
+(snip)
+rake ecs:docker:ecs-foo:build                   # ecs-foo のコンテナイメージをビルドする
+rake ecs:docker:ecs-foo:push                    # ecs-foo を ECR に push する
+(snip)
+
+$ rake ecs:docker:ecs-foo:build
+cd ./ecs-foo/docker/
+docker build --no-cache=true -t ecs-foo .
+Sending build context to Docker daemon 2.048 kB
+Step 1 : FROM busybox
+ ---> 47bcc53f74dc
+Successfully built 47bcc53f74dc
+cd -
 ```
