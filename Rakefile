@@ -139,19 +139,6 @@ namespace :ecs do
       targets << target
     end
 
-    desc "Get login infomation"
-    task :get_login do
-      puts "Get login infomation"
-      # sh "aws --region #{config[:region]} ecr get-login > #{config[:ecr][:login_file]}"
-      sh "aws --region us-east-1 ecr get-login > #{config[:ecr][:login_file]}"
-    end
-
-    desc "Docker Registry にログインする"
-    task :login => :get_login do
-      sh "sh #{config[:ecr][:login_file]}"
-      Rake::Task[:clean].execute
-    end
-
     revision = Time.now.to_i
     targets.each do |target|
       namespace target.to_sym do
@@ -336,4 +323,20 @@ Host *
     end
   end
 
+end
+
+CLEAN.include("#{config[:ecr][:login_file]}")
+namespace :ecr do
+  desc "Get login infomation"
+  task :get_login do
+    puts "Get login infomation"
+    region = config[:ecr][:registry].split(".")[-3]
+    sh "aws --region #{region} ecr get-login > #{config[:ecr][:login_file]}"
+  end
+
+  desc "Docker Registry にログインする"
+  task :login => :get_login do
+    sh "sh #{config[:ecr][:login_file]}"
+    Rake::Task[:clean].execute
+  end
 end
